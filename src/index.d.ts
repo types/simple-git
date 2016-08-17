@@ -28,14 +28,7 @@ declare namespace simpleGit {
     /**
      * Adds one or more files to be under source control
      */
-    add(fileA: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, fileC: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, fileC: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, fileC: string, fileD: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, handlerFn: HandlerFunction): Git;
-    add(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, handlerFn: HandlerFunction): Git;
-    add(...filesAndHandler: Array<string | HandlerFunction>): Git;
+    add(files: string[], handlerFn: HandlerFunction): Git;
 
     /**
      * Adds an anootated tag to the head of the current branch
@@ -102,12 +95,7 @@ declare namespace simpleGit {
     /**
      * Commits changes on the named files with the supplied message, when supplied, the optional options object can contain any other parameters to pass to the commit command, setting the value of the property to be a string will add `name=value` to the command string, setting any other type of value will result in just the key from the object being passed (ie: just `name`), an example of setting the author is below
      */
-    commit(message: string, fileA: string, options: any, handlerFn: HandlerFunction): Git;
-    commit(message: string, fileA: string, fileB: string, options: any, handlerFn: HandlerFunction): Git;
-    commit(message: string, fileA: string, fileB: string, fileC: string, options: any, handlerFn: HandlerFunction): Git;
-    commit(message: string, fileA: string, fileB: string, fileC: string, fileD: string, options: any, handlerFn: HandlerFunction): Git;
-    commit(message: string, fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, options: any, handlerFn: HandlerFunction): Git;
-    commit(message: string, fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, options: any, handlerFn: HandlerFunction): Git;
+    commit(message: string, files: string[], options: any, handlerFn: HandlerFunction): Git;
 
     /**
      * Sets the command to use to reference git, allows for using a git binary not available on the path environment variable
@@ -227,28 +215,12 @@ declare namespace simpleGit {
     /**
      * Removes any number of files from source control
      */
-    rm(fileA: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, fileH: string, fileI: string, handlerFn: HandlerFunction): Git;
-    rm(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, fileH: string, fileI: string, fileJ: string, handlerFn: HandlerFunction): Git;
+    rm(files: string[], handlerFn: HandlerFunction): Git;
 
     /**
      * removes files from source control but leaves them on disk
      */
-    rmKeepLocal(fileA: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, fileH: string, fileI: string, handlerFn: HandlerFunction): Git;
-    rmKeepLocal(fileA: string, fileB: string, fileC: string, fileD: string, fileE: string, fileF: string, fileG: string, fileH: string, fileI: string, fileJ: string, handlerFn: HandlerFunction): Git;
+    rmKeepLocal(files: string[], handlerFn: HandlerFunction): Git;
 
     /**
      * sets whether the console should be used for logging errors (defaults to true when the NODE_ENV contains the string `prod`)
@@ -312,16 +284,7 @@ declare namespace simpleGit {
     /**
      * checks if filepath excluded by .gitignore rules
      */
-    checkIgnore(filepathA: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, filepathE: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, filepathE: string, filepathF: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, filepathE: string, filepathF: string, filepathG: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, filepathE: string, filepathF: string, filepathG: string, filepathH: string, filepathI: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(filepathA: string, filepathB: string, filepathC: string, filepathD: string, filepathE: string, filepathF: string, filepathG: string, filepathH: string, filepathI: string, filepathJ: string, handlerFn: HandlerFunction): Git;
-    checkIgnore(handlerFn: HandlerFunction): Git;
+    checkIgnore(filepaths: string[], handlerFn: HandlerFunction): Git;
 
     /**
      * lists remote repositories - there are so many optional arguments in the underlying git ls-remote call, just supply any you want to use as the optional args array of strings eg: git.listRemote(['--heads', '--tags'], console.log.bind(console))
