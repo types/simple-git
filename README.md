@@ -1,7 +1,7 @@
 # Typed Simple Git  [![Build Status](https://travis-ci.org/types/simple-git.svg?branch=master)](https://travis-ci.org/types/simple-git)
 
 
-The type definition for [`simple-git`](git://github.com/steveukx/git-js.git)
+The type definition for [`simple-git`](https://github.com/steveukx/git-js.git)
 
 ## LICENSE
 
