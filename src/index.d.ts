@@ -56,6 +56,11 @@ declare namespace simpleGit {
     branch(handlerFn?: (error: any, branchSummary: BranchSummary) => void): Git;
 
     /**
+     * Gets a list of local branches.
+     */
+    branchLocal(handlerFn?: (error: any, branchSummary: BranchSummary) => void): Git;
+
+    /**
      * Generates `cat-file` detail.
      * @param options should be an array of strings as supported arguments to the `cat-file` command
      */
@@ -81,6 +86,11 @@ declare namespace simpleGit {
      * Convenicence method to pull then checkout the latest tag
      */
     checkoutLatestTag(handlerFn: HandlerFunction): Git;
+
+    /**
+     * Remove untracked files from the working tree.
+     */
+    clean(mode: string, options?: string[], handlerFn?: HandlerFunction): Git;
 
     /**
      * Clone a remote repo at `repoPath` to a local directory at `localPath` with an optional array of additional arguments to include between `git clone` and the trailing `repo local` arguments
