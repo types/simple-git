@@ -1,5 +1,7 @@
 # Typed Simple Git  [![Build Status](https://travis-ci.org/types/simple-git.svg?branch=master)](https://travis-ci.org/types/simple-git)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/types/npm-simple-git.svg)](https://greenkeeper.io/)
+
 
 The type definition for [`simple-git`](https://github.com/steveukx/git-js.git)
 
