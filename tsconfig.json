@@ -2,11 +2,13 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "out"
+    "baseUrl": "./src",
+    "paths": {
+      "simple-git": ["index.d.ts"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "out",
-    "source"
+  "include":[
+    "src",
+    "test"
   ]
 }
