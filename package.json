@@ -15,6 +15,7 @@
     "build+test+lint": "npm run build && npm run all-tests && npm run lint"
   },
   "devDependencies": {
+    "@types/blue-tape": "^0.1.31",
     "blue-tape": "^1.0.0",
     "dtslint": "^0.1.2",
     "onchange": "^3.2.1",
@@ -25,5 +26,6 @@
     "tslint-config-typings": "^0.3.1",
     "typescript": "^2.4.1",
     "typings": "^2.1.1"
-  }
+  },
+  "dependencies": {}
 }
