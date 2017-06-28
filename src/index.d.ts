@@ -4,11 +4,11 @@
 declare function simpleGit(workingDirPath?: string): simpleGit.Git;
 
 declare namespace simpleGit {
-  export class BranchSummary {
+  class BranchSummary {
     static parse(commit: string): BranchSummary;
     push(current: string, detached: boolean, name: string, commit: string, label: string): void;
   }
-  export class DiffSummary {
+  class DiffSummary {
     static parse(text: string): DiffSummary;
     /**
      * Number of lines added
@@ -20,11 +20,9 @@ declare namespace simpleGit {
     deletions: number;
     files: string[];
   }
-  export interface HandlerFunction {
-    (error: any, value: any): void;
-  }
+  type HandlerFunction = (error: any, value: any) => void;
 
-  export class Git {
+  class Git {
     /**
      * Adds one or more files to be under source control
      */
@@ -98,12 +96,17 @@ declare namespace simpleGit {
     clone(repoPath: string, localPath: string, options?: any, handlerFn?: HandlerFunction): Git;
 
     /**
-     * Commits changes in the current working directory with the supplied message where the message can be either a single string or array of strings to be passed as separate arguments (the git command line interface converts these to be separated by double line breaks)
+     * Commits changes in the current working directory with the supplied message where the message can be either a single string or array of strings to be passed as separate arguments.
+     * the git command line interface converts these to be separated by double line breaks.
      */
     commit(message: string, handlerFn: HandlerFunction): Git;
 
     /**
-     * Commits changes on the named files with the supplied message, when supplied, the optional options object can contain any other parameters to pass to the commit command, setting the value of the property to be a string will add `name=value` to the command string, setting any other type of value will result in just the key from the object being passed (ie: just `name`), an example of setting the author is below
+     * Commits changes on the named files with the supplied message, when supplied,
+     * the optional options object can contain any other parameters to pass to the commit command,
+     * setting the value of the property to be a string will add `name=value` to the command string,
+     * setting any other type of value will result in just the key from the object being passed (ie: just `name`),
+     * an example of setting the author is below
      */
     commit(message: string, files: string[], options: any, handlerFn: HandlerFunction): Git;
 
@@ -165,14 +168,17 @@ declare namespace simpleGit {
     /**
      * list commits between `options.from` and `options.to` tags or branch.
      * Additionally you can provide `options.file`, which is the path to a file in your repository.
-     * Then only this file will be considered. For any other set of options, supply `options` as an array of strings to be appended to the git log command. To use a custom splitter in the log format, set `options.splitter` to be the string the log should be split on
+     * Then only this file will be considered. For any other set of options, supply `options` as an array of strings to be appended to the git log command.
+     * To use a custom splitter in the log format, set `options.splitter` to be the string the log should be split on
      */
-    log(options: string[] | {
-      from?: string,
-      to?: string
-      file?: string
-      splitter?: string
-    }, handlerFn: HandlerFunction): Git;
+    log(
+      options: string[] | {
+        from?: string
+        to?: string
+        file?: string
+        splitter?: string
+      },
+      handlerFn: HandlerFunction): Git;
 
     /**
      * merge from one branch to another, when supplied the options should be an array of additional parameters to pass into the git merge command
@@ -238,7 +244,8 @@ declare namespace simpleGit {
     silent(isSilent: boolean): Git;
 
     /**
-     * Retrieves the stash list, optional first argument can be an object specifying `options.splitter` to override the default value of `:`, alternatively options can be a set of arguments as supported by the `git stash list` command.
+     * Retrieves the stash list, optional first argument can be an object specifying `options.splitter` to override the default value of `:`,
+     * alternatively options can be a set of arguments as supported by the `git stash list` command.
      */
     stashList(options?: any | { splitter?: string }, handlerFn?: HandlerFunction): Git;
 
@@ -269,7 +276,8 @@ declare namespace simpleGit {
     getRemotes(verbose: boolean, handlerFn: HandlerFunction): Git;
 
     /**
-     * resets the repository, the optional first argument can either be an array of options supported by the git reset command or one of the string constants hard or soft, if omitted the reset will be a soft reset to head, handlerFn: (err)
+     * resets the repository, the optional first argument can either be an array of options supported by the git reset command or one of the string constants hard or soft,
+     * if omitted the reset will be a soft reset to head, handlerFn: (err)
      */
     reset(handlerFn: HandlerFunction): Git;
     reset(resetMode: 'hard' | 'soft', handlerFn: HandlerFunction): Git;
@@ -297,7 +305,8 @@ declare namespace simpleGit {
     checkIgnore(filepaths: string[], handlerFn: HandlerFunction): Git;
 
     /**
-     * lists remote repositories - there are so many optional arguments in the underlying git ls-remote call, just supply any you want to use as the optional args array of strings eg: git.listRemote(['--heads', '--tags'], console.log.bind(console))
+     * lists remote repositories - there are so many optional arguments in the underlying git ls-remote call,
+     * just supply any you want to use as the optional args array of strings eg: git.listRemote(['--heads', '--tags'], console.log.bind(console))
      */
     listRemote(handlerFn: HandlerFunction): Git;
     listRemote(args: string[], handlerFn: HandlerFunction): Git;
@@ -305,7 +314,7 @@ declare namespace simpleGit {
     /**
      * attaches a handler that will be called with the name of the command being run and the stdout and stderr readable streams created by the child process running that command
      */
-    outputHandler(handlerFn: Function): Git;
+    outputHandler(handlerFn: (name, stdout, stderr) => void): Git;
 
     /**
      * Calls a simple function in the current step
