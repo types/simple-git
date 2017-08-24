@@ -1,6 +1,6 @@
-import test = require('blue-tape');
+import * as test from 'blue-tape';
 
-import simpleGit = require('simple-git');
+import * as simpleGit from 'simple-git';
 
 const git = simpleGit();
 

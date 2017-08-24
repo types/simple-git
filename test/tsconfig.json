@@ -5,7 +5,6 @@
   },
   "files": [
     "test.ts",
-    "../typings/index.d.ts",
     "../out/src/index.d.ts"
   ]
 }
